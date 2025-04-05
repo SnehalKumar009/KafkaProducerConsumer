@@ -21,7 +21,7 @@ pipeline {
 
     post {
         always {
-            junit './target/surefire-reports/TEST-local.snehal.AppTest.xml'
+            junit 'target/surefire-reports/TEST-*.xml'
         }
     }
 }
