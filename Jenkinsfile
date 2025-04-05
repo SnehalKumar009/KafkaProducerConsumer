@@ -21,10 +21,7 @@ pipeline {
 
     post {
         always {
-            sh '''
-                pwd
-                ls -la
-            '''
+            junit './target/surefire-reports/TEST-local.snehal.AppTest.xml'
         }
     }
 }
