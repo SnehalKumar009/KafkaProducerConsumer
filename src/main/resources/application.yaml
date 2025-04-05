@@ -1,0 +1,41 @@
+#I have Jenkins running at port 8080, hence changing the port for Tomcat to 8081
+server:
+  port: 8081
+
+spring:
+  kafka:
+    # Kafka broker(s) to connect to
+    bootstrap-servers: localhost:9092
+
+    # Consumer settings
+    consumer:
+      # Consumer group ID, can be any unique identifier for the group
+      #group-id: my-group
+
+      # Offset reset behavior (earliest means start from the first message if no offset exists)
+      auto-offset-reset: earliest
+
+      # Deserializer to convert messages from Kafka into objects (for string messages)
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+    # Producer settings
+    producer:
+      # Serializer to convert the key into byte array for Kafka
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+      # Serializer to convert the value into byte array for Kafka
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+      # Number of retries for producing messages
+      #retries: 3
+
+      # Kafka Admin settings for managing topics, partitions, etc.
+      #admin:
+      # Whether Kafka should auto-create topics
+      #auto-create: false
+
+    # Optional security configurations (if needed for secured Kafka setup)
+    # properties:
+    #   security.protocol: SSL
+    #   sasl.mechanism: PLAIN
+    #   sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="user" password="password";
